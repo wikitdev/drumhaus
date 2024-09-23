@@ -1,6 +1,6 @@
 FROM node:22-bullseye
 
-COPY drumhaus /server
+COPY . /server/
 WORKDIR /server
 RUN apt update && \ 
   apt install build-essential python3 -y && \

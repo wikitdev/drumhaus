@@ -37,3 +37,8 @@ next-env.d.ts
 
 # Virtual Environment
 /venv
+
+# Terraform
+.terraform
+terraform.tfstate
+terraform.tfstate.backup
