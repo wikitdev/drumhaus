@@ -53,7 +53,7 @@ resource "azurerm_lb_rule" "dm_lb_rule" {
   name                           = "dm-lb-rule"
   protocol                       = "Tcp"
   frontend_port                  = 80
-  backend_port                   = 3000
+  backend_port                   = 80
   frontend_ip_configuration_name = azurerm_lb.dm_lb.frontend_ip_configuration[0].name
   backend_address_pool_ids       = [azurerm_lb_backend_address_pool.dm_lb_bap.id]
 }

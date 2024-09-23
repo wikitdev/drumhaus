@@ -17,8 +17,8 @@ resource "aws_ecs_task_definition" "dm_td" {
       network_mode = "awsvpc"
       portMappings = [
         {
-          containerPort = 3000
-          hostPort      = 3000
+          containerPort = 80
+          hostPort      = 80
         }
       ]
       readonlyRootFilesystem = true
@@ -40,6 +40,6 @@ resource "aws_ecs_service" "dm_service" {
   load_balancer {
     target_group_arn = aws_lb_target_group.dm_tg.arn
     container_name   = "drummachine"
-    container_port   = 3000
+    container_port   = 80
   }
 }

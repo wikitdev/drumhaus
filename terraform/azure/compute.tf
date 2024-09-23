@@ -11,7 +11,7 @@ resource "azurerm_container_group" "dm_cg" {
     cpu    = "1.0"
     memory = "2.0"
     ports {
-      port     = 3000
+      port     = 80
       protocol = "TCP"
     }
   }
