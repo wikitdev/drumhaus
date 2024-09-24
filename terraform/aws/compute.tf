@@ -8,6 +8,7 @@ resource "aws_ecs_task_definition" "dm_td" {
   network_mode             = "awsvpc"
   cpu                      = "1024"
   memory                   = "2048"
+  execution_role_arn       = aws_iam_role.dm_role.arn
   container_definitions = jsonencode([
     {
       name         = "drummachine"
@@ -21,7 +22,16 @@ resource "aws_ecs_task_definition" "dm_td" {
           hostPort      = 80
         }
       ]
-      readonlyRootFilesystem = true
+      logConfiguration = {
+        logDriver = "awslogs"
+        options = {
+          awslogs-group         = aws_cloudwatch_log_group.dm_log_group.name
+          awslogs-region        = "us-east-2"
+          awslogs-stream-prefix = "ecs"
+          mode                  = "non-blocking"
+          max-buffer-size       = "25m"
+        }
+      }
     }
   ])
 }
