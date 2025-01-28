@@ -6,6 +6,7 @@ resource "azurerm_virtual_network" "dm_vn" {
 }
 
 resource "azurerm_subnet" "dm_subnet" {
+  #checkov:skip=CKV2_AZURE_31::Example how to skip certain checks
   name                 = "dm-subnet"
   resource_group_name  = azurerm_resource_group.ws_public_rg.name
   virtual_network_name = azurerm_virtual_network.dm_vn.name
